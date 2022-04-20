@@ -13,7 +13,7 @@ async function getFetch() {
   // const choice = "0593230256";
   const url = `https://openlibrary.org/isbn/${choice}.json`;
   const coverurl = `https://covers.openlibrary.org/b/isbn/${choice}-M.jpg`;
-
+  localStorage.setItem("book", choice);
   await fetch(url)
     .then((res) => res.json()) // parse response as JSON
     .then((data) => {
