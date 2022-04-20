@@ -75,3 +75,40 @@ async function getAuthorName() {
 //   document.body.insertAdjacentElement("beforeend", newDiv);
 //   count++;
 // }
+async function loadFetch() {
+  const choice = localStorage.getItem("book");
+  // const choice = "0593230256";
+  const url = `https://openlibrary.org/isbn/${choice}.json`;
+  const coverurl = `https://covers.openlibrary.org/b/isbn/${choice}-M.jpg`;
+  await fetch(url)
+    .then((res) => res.json()) // parse response as JSON
+    .then((data) => {
+      newDiv = document.createElement("div");
+      let newh2 = document.createElement("h2");
+      newp = document.createElement("p");
+      const newContent = document.createTextNode(`Title: ${data.title}`);
+      newh2.appendChild(newContent);
+      newDiv.appendChild(newh2);
+      let container = document.querySelector(".container");
+      container.insertAdjacentElement("beforeend", newDiv);
+      console.log(data);
+      author = data.authors[0].key;
+    })
+    .catch((err) => {
+      console.log(`error ${err}`);
+    });
+  fetch(coverurl)
+    .then((data) => {
+      // console.log(data.url);
+      let newImg = document.createElement("img");
+      newImg.src = data.url;
+      // document.querySelector("img").src = data.url;
+      newDiv.appendChild(newImg);
+    })
+    .catch((err) => {
+      console.log(`error ${err}`);
+    });
+  getAuthorName();
+}
+
+loadFetch();
