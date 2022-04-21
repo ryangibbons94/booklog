@@ -7,13 +7,18 @@ let authorName;
 let count = 0;
 let newp;
 let newDiv;
+let books = [];
+let bookNumber;
 
 async function getFetch() {
   const choice = document.querySelector("input").value;
   // const choice = "0593230256";
   const url = `https://openlibrary.org/isbn/${choice}.json`;
   const coverurl = `https://covers.openlibrary.org/b/isbn/${choice}-M.jpg`;
-  localStorage.setItem("book", choice);
+  localStorage.setItem("booknumber", bookNumber);
+  books[bookNumber] = choice;
+  bookNumber++;
+  localStorage.setItem("book", JSON.stringify(books));
   await fetch(url)
     .then((res) => res.json()) // parse response as JSON
     .then((data) => {
@@ -110,5 +115,5 @@ async function loadFetch() {
     });
   getAuthorName();
 }
-
-loadFetch();
+//uncomment this once I have the array thing working
+// loadFetch();
