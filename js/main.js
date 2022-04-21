@@ -1,5 +1,5 @@
-//next thing to add is dynamically adding cards to the dom every time a book is added to the input
 //then id like to somehow store them in local storage to be reloaded everytime a user comes back to the page
+//need to store them in an array in local storage and then run a function that loops through the array and displays them
 
 document.querySelector("button").addEventListener("click", getFetch);
 let author;
