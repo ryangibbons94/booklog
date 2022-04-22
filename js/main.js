@@ -1,6 +1,6 @@
 //then id like to somehow store them in local storage to be reloaded everytime a user comes back to the page
 //need to store them in an array in local storage and then run a function that loops through the array and displays them
-
+//need to add in conditional if the initial loop is empty
 document.querySelector("button").addEventListener("click", getFetch);
 let author;
 let authorName;
