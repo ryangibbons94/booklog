@@ -8,7 +8,8 @@ let count = 0;
 let newp;
 let newDiv;
 let books = [];
-let bookNumber;
+let bookNumber = 0;
+bookNumber = localStorage.getItem("booknumber");
 
 async function getFetch() {
   const choice = document.querySelector("input").value;
